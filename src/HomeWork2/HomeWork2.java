@@ -7,8 +7,7 @@ public class HomeWork2 {
         System.out.println("Число заканчивается на 7: " + lastNumberSevanTrue);
         boolean circleAndRectangleTrue = circleAndRectangle (1, 1, 1); // введите стороны прямоугольника и
         // радиус круга и проверьте будет ли круг закрывать прямоугольник
-        System.out.println("Круг закрывает прямоугольник: " + circleAndRectangleTrue);
-        rubleCaseDeclension(1); // введите число и проверьте окончание рубля
+        rubleCaseDeclension(0); // введите число и проверьте окончание рубля
         showNextDay (1, 1, 1); // введите дату dd, mm, yyyy
         housesOnTheLand(1, 1, 1, 1, 1, 1); // введите размеры двух домов и участка
         weekSchedule(0); // введите день недели
@@ -17,12 +16,25 @@ public class HomeWork2 {
     // является ли последняя цифра числа семеркой и вернуть boolean значение.
     public static boolean lastNumberSeven (int number1) {
         int multiple = 7; // задает число, которое должно быть в конце
-        return number1 % 10 == multiple || number1 == multiple;
+        return Math.abs(number1) % 10 == multiple || Math.abs(number1) == multiple;
     }
     // Имеется прямоугольное отверстие размерами a и b, где a и b – целые числа.
     // Определить, можно ли его полностью закрыть круглой картонкой радиусом r (тоже целое число).
     public static boolean circleAndRectangle (int a, int b, int r) { // a - 1 сторона, b - 2 сторона, r - радиус круга
-        return 2 * r >= Math.sqrt(a * a + b * b);
+        if (a > 0 && b > 0 && r > 0) {
+            if (2 * r >= Math.sqrt(a * a + b * b)) {
+                System.out.println("Круг закрывает прямоугольник");
+                return true;
+            }
+            else {
+                System.out.println("Круг не закрывает прямоугольник");
+                return false;
+            }
+        }
+        else {
+            System.out.println("Вы ввели отрицательное значение или ноль");
+            return false;
+        }
     }
     //Задать целое число в виде переменной, это число – сумма денег в рублях.
     // Вывести это число на экран, добавив к нему слово «рублей» в правильном падеже.
@@ -37,6 +49,9 @@ public class HomeWork2 {
         }
         else if (x >= 5 || x == 0 || (y>=10 && y<=20)) {
             System.out.println(number + " рублей");
+        }
+        else {
+            System.out.println("Вы ввели отрицательное значение");
         }
     }
     //Задать три числа – день, месяц, год. Вывести на экран в виде трех чисел дату следующего дня.
@@ -149,12 +164,12 @@ public class HomeWork2 {
                 break;
             case 6:
                 System.out.println("Суббота");
-                System.out.println("в течении дня домашне дела");
+                System.out.println("в течении дня домашние дела");
                 System.out.println("13:00 - 16:00 Самостоятельна работа");
                 break;
             case 7:
                 System.out.println("Воскресенье");
-                System.out.println("в течении дня домашне дела");
+                System.out.println("в течении дня домашние дела");
                 System.out.println("13:00 - 16:00 Самостоятельна работа");
                 break;
             default:
