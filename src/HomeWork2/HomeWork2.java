@@ -8,7 +8,7 @@ public class HomeWork2 {
         boolean circleAndRectangleTrue = circleAndRectangle (1, 1, 1); // введите стороны прямоугольника и
         // радиус круга и проверьте будет ли круг закрывать прямоугольник
         rubleCaseDeclension(0); // введите число и проверьте окончание рубля
-        showNextDay (1, 1, 1); // введите дату dd, mm, yyyy
+        showNextDay (28, 2, 2020); // введите дату dd, mm, yyyy
         housesOnTheLand(1, 1, 1, 1, 1, 1); // введите размеры двух домов и участка
         weekSchedule(0); // введите день недели
     }
@@ -87,7 +87,7 @@ public class HomeWork2 {
             ++day;
             System.out.println(day + "." + month + "." + year + " y.");
         }
-        else if (day == 28 && month == 2 && (year % 4 != 0 && year % 100 == 0 || year % 400 != 0) && year > 0) {
+        else if (day == 28 && month == 2 && !leapYear && year > 0) {
             day = 1;
             ++month;
             System.out.println(day + "." + month + "." + year + " y.");
