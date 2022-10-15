@@ -56,7 +56,7 @@ public class ATM {
                 System.out.println(false);
                 System.out.println("В банкомате не достаточно средств.\nСпасибо, что воспользовались нашим банком");
             }
-            else if (money % 10 == 0 || money != 10 || money != 30) {
+            else if (money % 10 == 0 && money != 10 && money != 30) {
                 withdrawMoneyMain(money);
             }
             else {
@@ -68,9 +68,9 @@ public class ATM {
         // метод для успешного снятия денег
         // если пришло положительное число и оно кратно 10, но не 10 и не 30, запускается метод
     private void withdrawMoneyMain(int money) {
-        int amountDenominationTwenty = 0;
-        int amountDenominationFifty = 0;
-        int amountDenominationHundred = 0;
+        int denominationTwenty = this.denominationTwenty;
+        int denominationFifty = this.denominationFifty;
+        int denominationHundred = this.denominationHundred;
             int hundred = money - money % 100; // берет числа кратные 100
         // запускает цикл выдачи купюры по 100, работает до тех пор, пока купюры 100 не закончатся,
         // либо не закончится запрашиваемая сумма для этих купюр
@@ -78,45 +78,47 @@ public class ATM {
                 if (hundred == 100 && (money - 10) % 20 == 0 && (money - 20) % 50 != 0 && (money % 50) % 20 != 0) {
                     break;
                 }
-                amountDenominationHundred++;
-                denominationHundred--; // уменьшается кол-во купюр в банкомае
+                denominationHundred--;
                 hundred -= 100; // уменьшается запрашиваемая сумма для данных купюр
                 money -= 100;  // уменьшается запрашиваемая сумма
             }
         int fifty = 0;
-        // для купюр 50 ставим условие, остаток должен быть кратным 20 и разница между запрашиваемой суммой и
+        // для купюр 50 ставим условие, остаток должен быть кратным 20 или разница между запрашиваемой суммой и
         // количеством купюр 50 болжна быть кратна 20
         // если условие выполнено, то устанавливаем число кратное 50, и прогоняем по циклу
-            if ((money % 50) % 20 == 0 && (money - denominationFifty * 50) % 20 == 0) {
+            if ((money % 50) % 20 == 0 && denominationFifty >= 1) {
                 fifty = money - money % 50;
             }
-            else if (((money - 50) % 20 == 0 || (money - 50 - 10) % 20 == 0) &&
-                    (money - denominationFifty * 50) % 20 == 0) {
+            else if (((money - 50 - 10) % 20 == 0 || (money - 50) % 20 == 0) && denominationFifty >= 1) {
                 fifty = money - (money % 50) - 50;
             }
-            while (fifty > 0 && denominationFifty > 0) {
-                amountDenominationFifty++;
+            while (fifty > 0 && denominationFifty > 0 ) {
+                if (denominationFifty == 1 && ((money - denominationFifty) % 20 != 0)) {
+                    break;
+                }
                 denominationFifty--;
                 fifty -= 50;
                 money -= 50;
             }
-            // прогоняем остато запрашиваемой суммы через купюры по 20
+            // прогоняем остаток запрашиваемой суммы через купюры по 20
             while (money > 0 && denominationTwenty > 0) {
-                amountDenominationTwenty++;
                 denominationTwenty--;
                 money -= 20;
             }
             // если купюр хватило печатаем true и выводим на экран какими купюрами выдал банкомат необходимую сумму
         if (money == 0) {
                 System.out.println(true);
-                if (amountDenominationHundred > 0) {
-                    System.out.print("100*" + amountDenominationHundred + " ");
+                if (denominationHundred != this.denominationHundred) {
+                    System.out.print("100*" + (this.denominationHundred - denominationHundred) + " ");
+                    this.denominationHundred = denominationHundred; // уменьшается кол-во купюр в банкомате
                 }
-                if (amountDenominationFifty > 0) {
-                    System.out.print("50*" + amountDenominationFifty + " ");
+                if (denominationFifty != this.denominationFifty) {
+                    System.out.print("50*" + (this.denominationFifty - denominationFifty) + " ");
+                    this.denominationFifty = denominationFifty;
                 }
-                if (amountDenominationTwenty > 0) {
-                    System.out.print("20*" + amountDenominationTwenty);
+                if (denominationTwenty != this.denominationTwenty) {
+                    System.out.print("20*" + (this.denominationTwenty - denominationTwenty));
+                    this.denominationTwenty = denominationTwenty;
                 }
             System.out.println();
             }
