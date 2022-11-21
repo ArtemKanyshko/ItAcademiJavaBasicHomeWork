@@ -1,0 +1,10 @@
+Person{name='Катя', surname='Котиков(а)', age=11}
+Person{name='Вика', surname='Канышко', age=12}
+Person{name='Яна', surname='Олололов(а)', age=13}
+Person{name='Александр', surname='Котиков(а)', age=18}
+Person{name='Вика', surname='Олололов(а)', age=8}
+Person{name='Андрей', surname='Олололов(а)', age=23}
+Person{name='Катя', surname='Канышко', age=11}
+Person{name='Яна', surname='Иванов(а)', age=21}
+Person{name='Владимир', surname='Олололов(а)', age=14}
+Person{name='Катя', surname='Канышко', age=7}
