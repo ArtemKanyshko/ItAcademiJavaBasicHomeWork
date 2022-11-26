@@ -1,0 +1,7 @@
+textFileForTask4.txt
+textFileForTask5General.txt
+textFileForTask1.txt
+textFileForTAsk5ListFile.txt
+textFileForTask3.txt
+textFileForTask2.txt
+textFileForTask0.txt
