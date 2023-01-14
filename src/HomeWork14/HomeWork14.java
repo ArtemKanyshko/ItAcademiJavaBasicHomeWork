@@ -19,7 +19,7 @@ public class HomeWork14 {
         LocalDate dayOfMonth = LocalDate.of(nowYear, monthNumber, 1);
         Stream.iterate(dayOfMonth.withDayOfMonth(1), day -> day.plusDays(1))
                 .limit(dayOfMonth.lengthOfMonth())
-                .peek(localDate -> System.out.println(localDate.format(DateTimeFormatter.ofPattern("dd::MM::yyyy"))))
+                .peek(localDate -> System.out.println(localDate.format(DateTimeFormatter.ofPattern("dd::MM::uuuu"))))
                 .count();
         System.out.println();
 

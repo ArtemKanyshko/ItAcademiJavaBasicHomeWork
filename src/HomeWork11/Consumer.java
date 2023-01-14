@@ -2,20 +2,22 @@ package HomeWork11;
 
 import java.util.Queue;
 
-public class Consumer extends QueueTask3Synchronized {
-    volatile private Queue<Integer> queue;
-
-    public Consumer(Queue<Integer> queue) {
-        this.queue = queue;
+public class Consumer extends Thread {
+    private QueueTask3Synchronized queueTask3Synchronized;
+    private String name;
+    public Consumer (QueueTask3Synchronized queueTask3Synchronized, String name) {
+        this.queueTask3Synchronized = queueTask3Synchronized;
+        this.name = name;
     }
 
     @Override
-    public synchronized void run() {
-            try {
-                remove();
-            } catch (InterruptedException e) {
-                System.out.println("Exception" + e);
-            }
+    public void run() {
+        while (queueTask3Synchronized.getAmount() <= 0) {
+            return;
+        }
+        while (queueTask3Synchronized.getAmount() > 0) {
+            queueTask3Synchronized.out(name);
+        }
 
     }
 }

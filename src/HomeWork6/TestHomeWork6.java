@@ -18,15 +18,15 @@ public class TestHomeWork6 {
         System.out.println("Задание 1. Бытовая техника.");
         WaterHeaters waterHeatersBosh = new WaterHeaters("Водонагреватель Bosh"); // создали два водонагревателя
         WaterHeaters waterHeatersLG = new WaterHeaters("Водонагреватель LG");
-        waterHeatersLG.PlugIn(); // включили
-        waterHeatersBosh.PlugIn();
-        waterHeatersBosh.Unplug(); // выключили
+        waterHeatersLG.plugIn(); // включили
+        waterHeatersBosh.plugIn();
+        waterHeatersBosh.unplug(); // выключили
         waterHeatersLG.setWaterTemperature(20); // установили температуру воды на 20
         waterHeatersLG.incrementTemperature(); // увеличили темтературу воды
         waterHeatersLG.incrementTemperature();
         waterHeatersBosh.setWaterTemperature(30); // пытаемся установить температуру воды на 30, выдаст сообщение что
         Dishwashers dishwashersSamsung = new Dishwashers("Посудамойка Samsung"); // создали мойку посуды
-        dishwashersSamsung.PlugIn();
+        dishwashersSamsung.plugIn();
         System.out.println();
 
         /* Создать цепочку наследования (минимум 3 звена) классов, описывающих

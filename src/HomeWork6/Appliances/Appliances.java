@@ -15,11 +15,11 @@ abstract class Appliances implements Pluggable{ // родитель для бы�
     public boolean isSwitchAppliances() {
         return switchAppliances;
     }
-    public void PlugIn () { // включить
+    public void plugIn () { // включить
         System.out.println(name + " On");
         switchAppliances = true;
     }
-    public void Unplug () { // выключить
+    public void unplug () { // выключить
         System.out.println(name + " Off");
         switchAppliances = false;
     }

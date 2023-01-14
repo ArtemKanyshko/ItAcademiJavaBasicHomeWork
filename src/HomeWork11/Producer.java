@@ -3,21 +3,22 @@ package HomeWork11;
 import java.util.Queue;
 import java.util.Random;
 
-public class Producer extends QueueTask3Synchronized{
-    Random random = new Random();
-    volatile private Queue<Integer> queue;
-
-    public Producer(Queue<Integer> queue) {
-        this.queue = queue;
+public class Producer extends Thread{
+    private QueueTask3Synchronized queueTask3Synchronized;
+    private String name;
+    public Producer (QueueTask3Synchronized queueTask3Synchronized, String name) {
+        this.queueTask3Synchronized = queueTask3Synchronized;
+        this.name = name;
     }
 
     @Override
-    public synchronized void run() {
-            try {
-                add();
-            } catch (InterruptedException e) {
-                System.out.println("Exception" + e);
+    public void run() {
+        while (queueTask3Synchronized.getAmount() <= 0) {
+            return;
+        }
+        while (queueTask3Synchronized.getAmount() > 0) {
 
+            queueTask3Synchronized.in(name);
         }
     }
 }

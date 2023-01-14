@@ -2,11 +2,17 @@ package HomeWork3;
 
 public class HomeWork3Cycles {
     public static void main(String[] args) {
+        System.out.println("Задание 1");
         factorialNumbers(1, 10); // введите числа от и до что бы посчитать их факториалы
-        sumNumbers (1, 25); // введите числа от и до что бы посчитать их сумму
+        System.out.println("Задание 2");
+        productNumbers (1, 25); // введите числа от и до что бы посчитать их произведение
+        System.out.println("Задание 3");
         sumNumbers2(7893823445L); // введите число, что бы посчитать сумму чисел в введенном числе
+        System.out.println("Задание 4");
         secondPrimeNumber(50, 70); // введите числа от и до что бы найти второе число в интервале
+        System.out.println("Задание 5");
         sevenHope (1, 100); // введите числа от и до что бы узнать какие делятся на 7
+        System.out.println("Задание 6");
         accountingFormatNumber(12312656732312L); // введите число, что бы перевести его в бух формат
     }
     // Вычислить факториал целых чисел от 0 до 10 с помощью цикла while для каждого.
@@ -32,10 +38,10 @@ public class HomeWork3Cycles {
         }
     }
     // Вычислить произведение чисел от 1 до 25 с помощью цикла do while.
-    public static void sumNumbers (int firstNumber, int lastNumber) {
-        int s = 0;
+    public static void productNumbers (long firstNumber, long lastNumber) {
+        long s = 1;
         do {
-            s = s + firstNumber;
+            s *= firstNumber;
             firstNumber++;
         }
         while (firstNumber <= lastNumber);

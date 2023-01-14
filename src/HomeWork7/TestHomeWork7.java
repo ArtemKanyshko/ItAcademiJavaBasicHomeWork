@@ -56,34 +56,34 @@ public class TestHomeWork7 {
 
     }
     public static void nextSeason(String nextSeason) {
-        if (nextSeason.compareTo("WINTER") == 0) {
+        if (nextSeason.equals("WINTER")) {
             System.out.println(SPRING + " (" + SPRING.getCountOfDays() +
                     " дней(дня), " + SPRING.getDescription() + ")");
         }
-        if (nextSeason.compareTo("SPRING") == 0) {
+        if (nextSeason.equals("SPRING")) {
             System.out.println(SUMMER + " (" + SUMMER.getCountOfDays() +
                     " дней(дня), " + SUMMER.getDescription() + ")");
         }
-        if (nextSeason.compareTo("SUMMER") == 0) {
+        if (nextSeason.equals("SUMMER")) {
             System.out.println(AUTUMN + " (" + AUTUMN.getCountOfDays() +
                     " дней(дня), " + AUTUMN.getDescription() + ")");
         }
-        if (nextSeason.compareTo("AUTUMN") == 0) {
+        if (nextSeason.equals("AUTUMN")) {
             System.out.println(WINTER + " (" + WINTER.getCountOfDays() +
                     " дней(дня), " + WINTER.getDescription() + ")");
         }
     }
         public static void sumDaysSeason(String nowSeason) {
-            if (nowSeason.compareTo("WINTER") == 0) {
+            if (nowSeason.equals("WINTER")) {
                 System.out.println(WINTER.getCountOfDays() + " дней(дня)");
             }
-            if (nowSeason.compareTo("SPRING") == 0) {
+            if (nowSeason.equals("SPRING")) {
                 System.out.println(SPRING.getCountOfDays() + " дней(дня)");
             }
-            if (nowSeason.compareTo("SUMMER") == 0) {
+            if (nowSeason.equals("SUMMER")) {
                 System.out.println(SUMMER.getCountOfDays() + " дней(дня)");
             }
-            if (nowSeason.compareTo("AUTUMN") == 0) {
+            if (nowSeason.equals("AUTUMN")) {
                 System.out.println(AUTUMN.getCountOfDays() + " дней(дня)");
             }
     }

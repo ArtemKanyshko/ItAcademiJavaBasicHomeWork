@@ -11,7 +11,7 @@ public class HomeWork11Synchronized {
             synchronizedTask1.start();
             synchronizedTask1.join();
         }
-        /*Создать программу, которая реализует deadlock между тремя потоками.*/
+        /*2. Создать программу, которая реализует deadlock между тремя потоками.*/
         SynchronizedLock1 synchronizedLock1 = new SynchronizedLock1();
         SynchronizedLock2 synchronizedLock2 = new SynchronizedLock2();
         SynchronizedLock3 synchronizedLock3 = new SynchronizedLock3();
@@ -25,19 +25,20 @@ public class HomeWork11Synchronized {
         спят. Если элементов стало <= 80, производители просыпаются. Все это работает до
         тех пор, пока обработанных элементов не станет 10000, только потом программа
         завершается.*/
-        // TODO буду дорабатывать это задание, на данном этапе оно не работает
+
         QueueTask3Synchronized queueTask3Synchronized = new QueueTask3Synchronized();
-        Producer producer1 = new Producer(queueTask3Synchronized.queue);
-        Producer producer2 = new Producer(queueTask3Synchronized.queue);
-        Producer producer3 = new Producer(queueTask3Synchronized.queue);
-        Consumer consumer1 = new Consumer(queueTask3Synchronized.queue);
-        Consumer consumer2 = new Consumer(queueTask3Synchronized.queue);
+
+        Thread producer1 = new Thread(new Producer(queueTask3Synchronized, "Производитель 1"));
+        Thread producer2 = new Thread(new Producer(queueTask3Synchronized, "Производитель 2"));
+        Thread producer3 = new Thread(new Producer(queueTask3Synchronized, "Производитель 3"));
+        Thread consumer1 = new Thread(new Consumer(queueTask3Synchronized, "Потребитель 1"));
+        Thread consumer2 = new Thread(new Consumer(queueTask3Synchronized, "Потребитель 2"));
+
         producer1.start();
         producer2.start();
         producer3.start();
         consumer1.start();
         consumer2.start();
-
 
     }
 }

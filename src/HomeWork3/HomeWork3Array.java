@@ -7,11 +7,17 @@ public class HomeWork3Array {
     static Random random = new Random();
 
     public static void main(String[] args) {
+        System.out.println("Задание 1");
         lastElement(); // задание 1
+        System.out.println("Задание 2");
         evenIndex(); // задание 2
+        System.out.println("Задание 3");
         maxElement(); // задание 3
+        System.out.println("Задание 4");
         sumElements(); // задание 4
+        System.out.println("Задание 5");
         reverseArray(); // задание 5
+        System.out.println("Задание 6");
         butterfly (); // задание 6
     }
     // Создайте переменную для массива из 10 элементов.
@@ -30,19 +36,14 @@ public class HomeWork3Array {
     // Создайте переменную для массива из 10 элементов (другим способом).
     // Выведите на экран элементы, стоящие на четных позициях (индексы).
     public static void evenIndex () {
-        int e = 10; // количество элементов массива
-        int[] array = new int[e];
-        int i = 0;
-        while (i < e ) {
-            array [i] = (int) (Math.random() * 10 + 1); // другой способ
-            i++;
-        }
+        int[] array = {10, 1, 1, 1, 10, 10, 1, 1, 1, 10};
         System.out.println(Arrays.toString(array));
-        for (i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (i % 2 == 0) {
                 System.out.print(i + " = " + array[i] + ", ");
             }
         }
+        System.out.println();
     }
     // Создайте переменную для массива из 10 элементов.
     // Заполните его произвольными значениями целочисленного типа. Найдите максимальный элемент и выведите его индекс.
@@ -55,15 +56,10 @@ public class HomeWork3Array {
         System.out.println(Arrays.toString(array));
         int m = array[0];
         int indexMax = 0;
-        for (int i = 0; i < array.length; i++) { // находим максимальный элемент
+        for (int i = 1; i < array.length; i++) { // находим максимальный элемент
             if (m < array[i]) {
                 m = array[i];
-            }
-        }
-        for (int i = 0; i < array.length; i++) { // находим индекс максимального элемента
-            if (array[i] == m) {
                 indexMax = i;
-                break; // останавливаем цикл на первом нашедшем индексе
             }
         }
         System.out.println("индекс " + indexMax + " = " + m);

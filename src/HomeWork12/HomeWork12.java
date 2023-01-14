@@ -17,8 +17,13 @@ public class HomeWork12 {
         клавиатуры и заполните объект класса Person с помощью паттерна
         Строитель.*/
         System.out.println("Введите Имя, Фамилия, год рождения");
-        Person person = new Person(scanner.next(), scanner.next(), scanner.nextInt());
-        System.out.println(person.getFirstname() + ", " + person.getLastName()+ ", " + person.getBirthday());
+        PersonBuilder personBuilder = new PersonBuilder();
+        personBuilder.setFirstName(scanner.nextLine());
+        personBuilder.setLastName(scanner.nextLine());
+        personBuilder.setBirthday(scanner.nextInt());
+        Person person = personBuilder.getResult();
+
+        System.out.println(person.toString());
         /* 3. Создайте простейший логгер, выводящий сообщения об ошибках в
         текстовый файл. Объект логгера должен быть создан с помощью ШП
         Singleton. У объекта должен быть обязательным один метод,

@@ -1,9 +1,9 @@
 package HomeWork12;
 
 public class PersonBuilder implements Builder{
-    String firstname;
-    String lastname;
-    int birthday;
+    private String firstname;
+    private String lastname;
+    private int birthday;
     @Override
     public void setFirstName(String firstname) {
         this.firstname = firstname;

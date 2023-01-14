@@ -7,32 +7,52 @@ import java.util.Random;
 
 public class QueueTask3Synchronized extends Thread{
     Random random = new Random();
-    volatile Queue<Integer> queue = new ArrayDeque<>(200);
-    volatile int amount = 0;
-    volatile int amountNow = 0;
-    public synchronized void add () throws InterruptedException {
-        while (amount <= 10000) {
-            if (amountNow <= 80) {
-                queue.add(random.nextInt(100) + 1);
-                amountNow++;
-                amount++;
-                System.out.println(amount);
-                System.out.println(amountNow + " now add");
-            } else if (amountNow >= 100) {
-                wait();
-            }
-        }
+    private int size = 200;
+    Queue<Integer> queue = new ArrayDeque<>(size);
+    private int count = 0;
+    private int amount = 10000;
+
+    public synchronized int getAmount() {
+        return amount;
     }
-    public synchronized void remove () throws InterruptedException {
-        while (amount <= 10000 && queue.peek() == null) {
-            if (amountNow > 0) {
-                queue.remove();
-                amountNow--;
-                System.out.println(amountNow + " now remove");
-            } else if (amountNow == 0) {
-            } else {
-                notify();
+
+    public synchronized void in(String name) {
+        if (count >= 100) {
+            try {
+                wait();
+                return;
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
+        queue.add(random.nextInt(100) + 1);
+        count++;
+        amount--;
+        System.out.println("Добавил в очередь: " + name);
+        System.out.println("Элементов в очереди: " + count);
+        System.out.println("Действий осталось: " + amount);
+        notify();
+
+    }
+
+    public synchronized void out (String name) {
+        if (count == 0) {
+            try {
+                wait();
+                return;
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        queue.remove();
+        count--;
+        amount--;
+        System.out.println("Забрал из очереди: " + name);
+        System.out.println("Элементов в очереди: " + count);
+        System.out.println("Действий осталось: " + amount);
+        if (count <= 80) {
+            notify();
+        }
+
     }
 }
